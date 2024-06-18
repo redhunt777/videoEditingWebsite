@@ -1,0 +1,644 @@
+@keyframes slideInFromBelow {
+    0% {
+        transform: translateY(3vw);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@font-face {
+    font-family: "Themundayfreeversion-Regular";
+    src: url('./assets/Themundayfreeversion-Regular.ttf') format('truetype');
+}
+ 
+@font-face {
+    font-family: "hatton";
+    src: url('./assets/PP\ Hatton\ Medium\ 500.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "Helvetica";
+    src: url('./assets/HelveticaWorld-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Hatton-thin";
+    src: url('./assets/PP\ Hatton\ Ultralight\ 200.otf') format('opentype');
+}
+
+@media(max-width: 630px){
+    .BigContainer{
+        display: flex;
+        justify-content: center; 
+        /* padding-top: 9vh; */
+        align-items: center;
+    }
+/* main page */
+    .heading{
+        color:#fff;
+        font-size: 2rem;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        animation: slideInFromBelow 1.2s ease-out;
+    }
+
+    .navigationBar{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+    }
+
+    .hamburger{
+        display: block;
+        cursor: pointer; 
+        margin-right: 2rem; ;
+       }
+
+    .hamburger.open .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.open .bar:nth-child(1){
+        transform:  translateY(8px) rotate(45deg);
+    }
+    .hamburger.open .bar:nth-child(3){
+        transform:  translateY(-8px) rotate(-45deg);
+    }
+
+    .navMenu{
+        position: fixed;
+        left: -100%;
+        gap: 0;
+        top: 4rem;
+        flex-direction: column;
+        background-color: #000;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 2rem;
+    }
+
+    .navItems{
+        margin: 16px 0;
+        font-size: 1.5rem;
+    }
+
+    .navMenu.open{
+        left: 0;
+        z-index: 2;
+    }
+
+    .navigationBar.open{
+        background-color: #000;
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+        margin: 0;
+    }
+
+    .headingContainer{
+        height: 7rem;
+    }
+
+    .heading{
+        font-size: 1.5rem;
+    }
+    .subHeading{
+        font-size: 0.9rem;
+    }
+
+    .logo{
+        height: 38px;
+        width: 38px;
+        margin-left: 1rem;
+    }
+
+    .subTitle{
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .thumbnail{
+        width: 18rem;
+        height: 11rem;
+    }
+
+    .editedVideos{
+        gap: 1.3rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .shortsContainer{
+        gap: 1.3rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .thumbnailDesign{
+        width: 18rem;
+        height: 11rem;
+    }
+    
+    .thumbnailDesignContainer{
+        gap: 1.3rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer{
+        padding: 1.5rem;
+    }
+
+    .footerName{
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+    .footerMail{
+        font-size: 0.8rem;
+        margin-top: 0.5vw;
+        color: #fff;
+    }
+
+    .iconContainer{
+        display: flex;
+        gap: 0rem;
+        margin-top: 0rem;
+    }
+
+    .icon{
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 1rem, 0.5rem;
+    }
+
+    
+
+    .copyright1 {
+        font-size: 0.8rem; 
+        color: #fff; 
+    }
+
+    .copyright2 {
+        color: #fff; 
+        margin-top: 0.2vw;
+        font-size: 0.6rem;
+    }
+}
+
+
+@media(max-width: 1090px){
+    .resumeContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items:flex-start;
+        padding-top: 4rem;
+        gap: 1rem;
+    }
+    .firstHalf{
+        width: 44rem;
+        margin: 0 auto;
+        height: 15rem;
+        position: relative;
+        border-radius: 12px;
+        background: linear-gradient(rgb(255, 255, 255), #F2F2F2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        transition: 300ms ease-out;
+    }
+
+    .secondHalf{
+        width: 44rem;
+        position: relative;
+        border-radius: 12px;
+        padding-bottom: 3rem;
+        margin: 0 auto;
+        margin-bottom: 4rem;
+        background: linear-gradient(rgb(255, 255, 255), #F2F2F2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profilePhoto{
+        width: 8rem;
+        height: 8rem;
+        border-radius: 12px;
+        position: absolute;
+        top: 3.5rem;
+        left: 2.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profileName{
+        position: absolute !important;
+        color: black;
+        font-size: 1.3rem;
+        position: fixed;
+        left: 13.5rem;
+        top: 2.5rem;
+        font-weight: 700;
+    }
+
+    
+    .passion{
+        width: 14rem;
+        text-align: center;
+        height: 1.8rem;
+        padding-top:0.3rem ;
+        font-size: 0.8rem;
+        font-weight: 500;
+        font-family: "Helvetica", sans-serif;
+        border-radius: 5px;
+        position: absolute;
+        top: 2.2rem;
+        left: 21rem;
+    }
+
+    .iconResume{
+        z-index: -1;
+        position: absolute;
+        top: 4rem;
+        left: 26.39rem;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        width: 40%;
+        height: 2.5rem;
+        background: linear-gradient(rgb(255, 255, 255), #F2F2F2);
+        border-radius: 8px;
+        transition: 300ms ease-out;
+    }
+        
+    .iconProfile{
+        background-color: #f1f1f3;
+        border-radius: 8px;
+        padding: 0.4vw;
+        margin: auto 0.8rem !important;
+        border: 0;
+        height: 1.5rem;
+        width: 1.5rem;
+
+    }
+
+    .showMore{
+        position: absolute;
+        width: 5rem;
+        height: 2.8rem;
+        background-color: #f1f1f3;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 4px;
+        right: 0;
+        display: flex;
+        justify-content: center;    
+        align-items: center;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .iconResume.open{
+        top: -2.9rem;
+        transition: 300ms;
+        z-index: -1;
+    }
+
+    .iconArrow.open{
+        transform: rotate(0deg);
+        transition: 300ms;
+    }
+
+    .firstHalf.open{
+        transition: 300ms;
+        margin-top: 2.5rem;
+    }
+
+    .iconArrow{
+        width: 1rem;
+        height: 1rem;
+        transform: rotate(180deg);
+        transition: 300ms;
+    }
+
+    .navBarRS.open{
+        top: -22.5rem;
+        transition: 300ms;
+        justify-content: center;
+    }
+
+
+    .showMoreText{
+        font-size: 0.7rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        color: black;
+    }
+        
+    .contactInformation{
+        display: flex;
+        width: 28rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: #f1f1f3;
+        z-index: 1;
+        border-radius: 8px;
+        gap: 1rem 0rem;
+        padding: 1rem 0;
+        position: absolute;
+        top: 5.2rem;
+        height: 8rem;
+        left: 13rem;
+    }
+
+        
+    .containerXY{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 12rem;  
+    }
+
+        
+    hr{
+        background-color: darkgray;
+        width: 30%;
+        margin: auto;
+        border-color: #e3dede;
+        opacity: 0.2;
+        height: 2px;
+    }
+
+        
+    .textXY{
+        font-size: 0.7rem;
+        color: rgb(152, 151, 151);
+        font-weight: 600;
+        line-height: 1rem;
+        font-family: "Montserrat", sans-serif;
+    }
+
+        
+    .textYZ{
+        font-size: 0.8rem;
+        font-family: "Montserrat", sans-serif;
+    }
+
+        
+    .navBarRS{
+        width: 25rem;
+        position: absolute;
+        height: 3rem;
+        transform: rotate(0deg) skewX(0deg);
+        background-color: ghostwhite;
+        border-radius: 8px;
+        top: -20rem;
+        left: 10rem;
+        box-shadow: -3px 3px 10px 0px #1d1c1c73;   
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(rgb(255, 255, 255), #F2F2F2);
+    }
+
+    .navBar{
+        transform: rotate(0deg) skewX(0deg);
+        margin-right: 3vw;
+        font-family: 'Times New Roman', Times, serif;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+        
+    .navBar:hover{
+        text-decoration: underline;
+        transform: rotate(0deg) skewX(0) translateY(-2px);
+        }
+}
+
+
+
+@media(max-width: 740px){
+    .firstHalf{
+        width: 20rem;
+        min-width: 20rem;
+        margin: 0rem 2rem;
+        height: 18rem;
+        position: relative;
+        border-radius: 12px;
+        background: linear-gradient(rgb(255, 255, 255), #F2F2F2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+    }
+
+    .back{
+        display: block;
+        position: absolute;
+        left: 2rem;
+        top: 2rem;
+        z-index: 2;
+    }
+
+    .leftArrow{
+        width: 1.5rem;
+        height: 1.5rem;
+        border: #000 1.5px solid;
+        border-radius: 50%;
+    }
+    .secondHalf{
+        width: 20rem !important;
+        position: relative;
+        border-radius: 12px;
+        padding-bottom: 3rem;
+        margin: 0 auto;
+        margin-bottom: 4rem;
+        background: linear-gradient(rgb(255, 255, 255), #F2F2F2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: 300ms ease-out;
+    }
+
+    .firstHalf.open{
+        margin-top: 0;
+    }
+            
+    .contactInformation{
+        display: none;
+    }
+
+    .iconResume{
+        display: none;
+    }
+
+    .navBarRS{
+        display: none;
+    }
+
+    .profileName{
+        top: 13rem;
+        left: 6.6rem;    
+   }
+
+    .profilePhoto{
+        top: 4rem;
+        left: 6rem;
+    }
+
+    .passion{
+        top: 15rem;
+        left: 3rem;
+    }
+
+    .iconArrow{
+        width: 1rem;
+        height: 1rem;
+        transform: rotate(0deg);
+        transition: 300ms;
+    }
+
+    .iconArrow.open{
+        transform: rotate(180deg);
+        transition: 300ms;
+    }
+
+    .firstHalf.open{
+        transition: 300ms;
+        height: 35rem;
+    }
+
+    .contactInformation.open{
+        display: flex;
+        width: 17rem;
+        margin: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        background-color: #f1f1f3;
+        z-index: 1;
+        border-radius: 8px;
+        gap: 1rem 0rem;
+        padding: 1rem 0;
+        position: absolute;
+        top: 20rem;
+        height: 14rem;
+        left: 1.5rem;
+        transition: 300ms;
+    }
+
+    .iconResume.open{
+        top: 17.3rem;
+        left: 1.5rem;
+        display: flex;
+        z-index: 1;
+        position: absolute;
+        transition: 300ms;
+        width: 17rem;
+        background-color: #f1f1f3;
+    }
+
+        
+    .aboutHeading{
+        font-size: 1.2rem;
+        font-family: "Montserrat", sans-serif;
+        color: rgb(34, 32, 32);
+        margin: auto;
+        text-align: start;
+        margin-top: 2rem;
+        color: rgb(47, 47, 47);
+        margin-left: 2.1rem;
+    }
+
+    .aboutC1{
+        margin-top: 2rem;
+    }
+
+    .aboutText{
+        margin: 0.6rem 2rem;
+        text-align: justify;
+        font-family: "Helvetica", serif; 
+        font-weight: 500;
+        color: rgb(0, 0, 0);
+        font-size: 0.7rem;
+        list-style:disc;
+    }
+
+        
+    .aboutTextP{
+        margin: 1rem 2rem;
+        text-align: justify;
+        font-family: "EB Garamond", serif;
+        font-weight: 500;
+        color: rgb(82, 81, 81);
+        font-size: 0.9rem;
+        font-style: italic;
+    }
+
+        
+    .skills{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.5rem;
+        margin-left: 2.1rem;
+        margin-top: 0.4rem;
+    }
+
+        
+    .skillsText{
+        font-size: 0.7rem;
+        font-family: "Helvetica", serif; 
+        width: 6rem;
+    }
+
+        
+    .skillsFillBar{
+        width: 80%;
+        height: 0.5rem;
+        background-color: #089fda;
+        border-radius: 3px;
+    }
+
+    .skillsEmptyBar{
+        width: 10rem;
+        height: 0.5rem;
+        background-color: #d3d3d3;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 3px;
+    }
+
+        
+    .experienceContainer{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin-top: 1.5rem;
+        margin-left: 2.1rem;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+        
+    .experienceSubHeading{
+        font-weight: 600;
+        font-size: 0.9rem;
+        font-family: "Helvetica", serif; 
+        letter-spacing: 1px;
+    }
+
+    .experienceText{
+        width: 16rem;
+        text-align: justify;
+        font-size: 0.7rem;
+        font-family: "Noto Sans", sans-serif;
+        font-weight: 400;
+    }
+
+
+
+    
+
+
+}

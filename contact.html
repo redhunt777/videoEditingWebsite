@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./assets/hyper_1.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleMob.css">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@400..700&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body class="contactBg">
+    <div class="loader-wrapper">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>    
+    <nav class="navigationBar">
+        <img src="./assets/hyper_1.png" alt="logo.png" class="logo">
+        <ul class="navMenu">
+            <a href="./index.html" class="navItems"><li style="color: #fff;">Home</li></a>
+            <a href="./resume.html" class="navItems"><li style="color: #fff;">Resume</li></a>
+            <a href="./contact.html" class="navItems"><li style="color: #fff;">Contact Me</li></a>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+    <div class="BigContainer"><div class="containerContact">
+        <h2 style="text-align: center; font-size:34px; color: #fff; margin-bottom: 30px; font-family: 'Montserrat', serif;">Contact Me</h2>
+        <form id="contactForm" method="POST">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <textarea id="message" name="message" placeholder="Enter your Message . . ." required></textarea>
+            </div>
+            <input type="submit" value="Submit">
+    
+        </form>
+    </div>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="index.js"></script>
+</body>
+
+<script>
+
+     // loader
+        window.addEventListener("load", ()=>{
+        const loader = document.querySelector(".loader-wrapper");
+        loader.className += " hiddenRoller";
+    })
+
+
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector('.navMenu');
+    const nav = document.querySelector('.navigationBar');
+    
+    
+    hamburger.addEventListener("click", ()=>{
+        console.log('clicked');
+        hamburger.classList.toggle("open");
+        navMenu.classList.toggle("open");
+        nav.classList.toggle("open");
+    })
+    
+    
+    </script>
+</html>
