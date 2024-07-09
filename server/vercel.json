@@ -12,6 +12,14 @@
       "dest": "views/$1"
     },
     {
+      "src": "/styleMob.css",
+      "dest": "views/assets/styleMob.css"
+    },
+    {
+      "src": "/style.css",
+      "dest": "views/assets/style.css"
+    },
+    {
       "src": "/(.*)",
       "dest": "server.js"
     }
