@@ -8,20 +8,16 @@
   ],
   "routes": [
     {
-      "src": "/assets/(.*)",
+      "src": "assets/(.*)",
       "dest": "views/assets/$1"
     },
     {
-      "src": "/styleMob.css",
+      "src": "styleMob.css",
       "dest": "/views/styleMob.css"
     },
     {
-      "src": "/style.css",
+      "src": "style.css",
       "dest": "/views/style.css"
-    },
-    {
-      "src": "/favicon.icon",
-      "dest": "views/assets/hyper_1.png"
     },
     {
       "src": "/(.*)",
