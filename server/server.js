@@ -66,7 +66,7 @@ server.post("/loginAdmin", async (req, res) => {
 });
 
 server.get("/", (req, res) => {
-  fs.readFile("data.json", "utf8", (err, data) => {
+  fs.readFile("./data.json", "utf8", (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).send("Error reading data file");
@@ -146,7 +146,7 @@ server.post("/uploadThumbnails", upload.single("file"), (req, res) => {
     },
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        fs.readFile("data.json", "utf8", (err, data) => {
+        fs.readFile("./data.json", "utf8", (err, data) => {
           if (err) {
             console.error("Error reading data file:", err);
             res.status(500).send("Error reading data file");
