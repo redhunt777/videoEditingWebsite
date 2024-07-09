@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/hyper_1.png">
+    <title>Hyper Cosmic Edit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@400..700&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleMob.css">
+    <script defer src="./index.js"></script>
+</head>
+<body>
+    <div class="loader-wrapper">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
+    <div class="backGround"> 
+        <nav class="navigationBar">
+            <img src="./assets/hyper_1.png" alt="logo.png" class="logo">
+            <ul class="navMenu">
+                <a href="/" class="navItems"><li>Home</li></a>
+                <a href="/about" class="navItems"><li>Resume</li></a>
+                <a href="/contact" class="navItems"><li>Contact Me</li></a>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+        <div class="headingContainer">
+            <h1 class="heading">HYPER COSMIC EDIT</h1>
+            <h1 class="subHeading">“transforming stories, frame by frame”</h1>
+        </div>
+    </div>
+
+    <h1 class="subTitle">EDITED VIDEOS</h1>
+    <div class="editedVideos">
+        <% if (data && data.length > 0) { %>
+            <% data.forEach(item => { %>
+                <% if (item.images_type === "EditedVideosThumbnail" && Array.isArray(item.url) && item.url.length > 0) { %>
+                    <% item.url.forEach(url => { %>
+                        <section class="hidden">
+                            <a href="<%= url.video_url %>" target="_blank"><img src="<%= url.img_url %>" alt="thumbnail" class="thumbnail"></a>
+                        </section>
+                    <% }); %>
+                <% } %>
+            <% }); %>
+        <% } else { %>
+            <H2>No thumbnail images found.</H2>
+        <% } %>
+    </div>
+
+    <h1 class="subTitle" style="margin-top: 7vw;">EDITED SHORTS</h1>
+
+    <div class="shortsContainer">
+        <% if (data && data.length > 0) { %>
+            <% data.forEach(item => { %>
+                <% if (item.images_type === "ShortVideosThumbnail" && Array.isArray(item.url) && item.url.length > 0) { %>
+                    <% item.url.forEach(url => { %>
+                        <div class="hidden">
+                            <a href="<%= url.video_url %>" target="_blank"><img src="<%= url.img_url %>" alt="thumbnail" class="editedShorts"></a>
+                        </div>
+                    <% }); %>
+                <% } %>
+            <% }); %>
+        <% } else { %>
+            <H2>No thumbnail images found.</H2>
+        <% } %>
+    </div>
+
+    <div>
+        <h1 class="subTitle">THUMBNAILS</h1>
+        <div class="thumbnailDesignContainer">
+            <% if (data && data.length > 0) { %>
+                <% data.forEach(item => { %>
+                    <% if (item.images_type === "thumbnails" && Array.isArray(item.url) && item.url.length > 0) { %>
+                        <% item.url.forEach(url => { %>
+                            <img src="<%= url.img_url %>" alt="<%=url.title%>" class="thumbnailDesign hidden">
+                        <% }); %>
+                    <% } %>
+                <% }); %>
+            <% } else { %>
+                <H2>No thumbnail images found.</H2>
+            <% } %>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footerName">
+            Samar Jal 
+        </div>
+        <div class="footerMail" >
+            hypercosmic.edit@gmail.com
+        </div>
+        <div class="iconContainer">
+            <a href="https://www.instagram.com/hypercosmic.edit/"><img src="./assets/instagram.png" alt="instagram" class="icon"></a>
+            <a href=" https://twitter.com/hypercosmicedit"><img src="./assets/twitter.png" alt="discord" class="icon"></a>
+            <a href="https://www.linkedin.com/in/kumar-samar-jal/"><img src="./assets/linkedin.png" alt="telegram" class="icon"></a>
+            <a href="https://www.youtube.com/@kumarsamarjal"><img src="./assets/youtube.png" alt="youtube" class="icon"></a>
+        </div>
+        <div class="copyright1">&copy; 2024 Hyper Cosmic Edits</div>
+        <div class="copyright2">All Rights Reserved</div>
+    </footer>
+
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader-wrapper");
+            loader.classList.add("hiddenRoller");
+        });
+
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector('.navMenu');
+        const nav = document.querySelector('.navigationBar');
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("open");
+            navMenu.classList.toggle("open");
+            nav.classList.toggle("open");
+        });
+    </script>
+</body>
+</html>

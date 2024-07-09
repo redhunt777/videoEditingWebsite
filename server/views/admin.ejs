@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/hyper_1.png">
+    <title>Admin-Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+
+    <script type="module" src="./admin.js"></script>
+</head>
+<body>
+    <% if (verified){ %>
+        <h1 style="text-align: center;">Admin Panel</h1>
+        <div class="uploads">
+          <div class="uploadImages">
+            <h2 style="text-align: center;">Upload Videos</h2>
+            <form id="uploadVideos">
+              <div class="mb-3 uploadForm">
+                <input class="form-control" type="file" id="formFileVideo">
+                <div>
+                  <label for="basic-url" class="form-label">Your Videos URL</label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="basic-addon3">URL:</span>
+                    <input type="text" class="form-control" id="basic_url_video" aria-describedby="basic-addon3 basic-addon4">
+                  </div>
+                </div>
+                <div>
+                <button class="btn-primary btn" type="submit">Submit</button></div>
+              </div>
+            </form>
+          </div>
+        
+          <div class="uploadImages">
+            <h2 style="text-align: center;">Upload Shorts</h2>
+            <form id="uploadShorts">
+              <div class="mb-3 uploadForm">
+                <input class="form-control" type="file" id="formFileShorts">
+                <div>
+                  <label for="basic-url" class="form-label">Your Videos URL</label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="basic-addon3">URL:</span>
+                    <input type="text" class="form-control" id="basic_url_short" aria-describedby="basic-addon3 basic-addon4">
+                  </div>
+                </div>
+                <div>
+                    <button class="btn-primary btn" type="submit">Submit</button></div>
+                </div>
+            </form>
+          </div>
+        
+          <div class="uploadImages">
+            <h2 style="text-align: center;">Upload Thumbnails</h2>
+            <form id="uploadThumbnails">
+              <div class="mb-3 uploadForm">
+                <input class="form-control" type="file" id="formFileThumbnail">
+                <div>
+                    <button class="btn-primary btn" type="submit">Submit</button></div>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+
+
+            <h2 style="text-align: center;">EditedVideos</h2>
+            <div class="editedVideos">
+                <% if (data && data.length > 0) { %>
+                    <% data.forEach(item => { %>
+                        <% if (item.images_type === "EditedVideosThumbnail" && Array.isArray(item.url) && item.url.length > 0) { %>
+                            <% item.url.forEach(url => { %>
+                                <section>
+                                    <a href="<%= url.video_url %>" target="_blank"><img src="<%= url.img_url %>" alt="thumbnail" class="thumbnail"></a>
+                                    <Button style="margin-top: 20px;" class="btn btn-danger delBut" onclick="handleDeleteEditedVideos('<%= url.title %>')"> Delete</Button>
+                                </section>
+                            <% }); %>
+                        <% } %>
+                    <% }); %>
+                <% } else { %>
+                    <H2>No thumbnail images found.</H2>
+                <% } %>
+            </div>
+
+            <h2 style="text-align: center;">Edited Shorts</h2>
+            <div class="shortsContainer">
+                <% if (data && data.length > 0) { %>
+                    <% data.forEach(item => { %>
+                        <% if (item.images_type === "ShortVideosThumbnail" && Array.isArray(item.url) && item.url.length > 0) { %>
+                            <% item.url.forEach(url => { %>
+                                <section>
+                                    <a href="<%= url.video_url %>" target="_blank"><img src="<%= url.img_url %>" alt="thumbnail" class="editedShorts"></a>
+                                    <Button style="margin-top: 20px;" class="btn btn-danger delBut" onclick="handleDeleteEditedShorts('<%= url.title %>')"> Delete</Button>
+                                </section>
+                            <% }); %>
+                        <% } %>
+                    <% }); %>
+                <% } else { %>
+                    <H2>No thumbnail images found.</H2>
+                <% } %>
+            </div>
+
+            <h2 style="text-align: center;">Thumbnails</h2>
+            <div class="thumbnailDesignContainer">
+                <% if (data && data.length > 0) { %>
+                    <% data.forEach(item => { %>
+                        <% if (item.images_type === "thumbnails" && Array.isArray(item.url) && item.url.length > 0) { %>
+                            <% item.url.forEach(url => { %>
+                                <section>
+                                <img src="<%= url.img_url %>" alt="<%=url.title%>" class="thumbnailDesign">
+                                <Button style="margin-top: 20px;" class="btn btn-danger delBut" onclick="handleDeleteEditedThumbnails('<%= url.title %>')"> Delete</Button>
+                                </section>
+                            <% }); %>
+                        <% } %>
+                    <% }); %>
+                <% } else { %>
+                    <H2>No thumbnail images found.</H2>
+                <% } %>
+            </div>
+
+    <%  }else{  %>
+        <div class="login-container">
+            <div class="formContainer">
+            <h2>Only For Admin Login</h2>
+            <form onsubmit="handleSubmit()" id="loginForm">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                  </div>
+                  <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                  </div>
+                <div>
+                    <button type="submit"  class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+        </div>
+        <% } %>
+</body>
+
+<script>
+          document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var username = document.getElementById('floatingInput').value;
+            var password = document.getElementById('floatingPassword').value;
+
+            if (username && password) {
+
+                axios.post('/loginAdmin',{ email: username, password: password})
+                    .then(function(response) {
+                        window.location.href = '/admin'; 
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                        alert('An error occurred. Please try again later.');
+                    });
+            } else {
+                alert('Please fill in both fields.');
+            }
+        });
+    </script>
+
+    
+
+</html>

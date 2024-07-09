@@ -1,0 +1,125 @@
+.login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.819) ;
+}
+
+.formContainer{
+    padding: 30px;
+    width: 40%;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer input{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+
+form{
+    width: 100%;
+}
+
+@media (max-width: 768px){
+    .formContainer{
+        width: 80%;
+    }
+
+}
+
+.editedVideos{
+    margin-top: 3vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3.2rem;
+    margin-bottom: 3vw;
+}
+
+.thumbnail{
+    width: 20rem;
+    height: 12rem;
+    border: 2px solid rgb(46, 42, 42);
+    border-radius: 12px;
+    cursor:pointer;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+}
+
+.uploads{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+
+}
+
+.uploadImages{
+    width: 70%;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.uploadForm{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.shortsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 5vw;
+    margin-bottom: 8vw;
+    flex-wrap: wrap;
+}
+.editedShorts{
+    height: 18rem;
+    width: 13rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out;
+    border: 0.1vw black solid;
+    box-shadow: 3px 2px 10px 0px black;
+}
+
+.thumbnailDesignContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 3vw;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 6vw;
+}
+
+.thumbnailDesign{
+    width: 20rem;
+    height: 12rem;
+    border-radius: 8px;
+    transition: transform 0.4s ease-in-out;
+}
