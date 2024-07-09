@@ -10,8 +10,5 @@
       "src": "/(.*)",
       "dest": "server.js"
     }
-  ],
-  "env": {
-    "EJS_LAYOUTS": "enabled"
-  }
+  ]
 }
