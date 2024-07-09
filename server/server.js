@@ -23,6 +23,8 @@ configDotenv();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+var DATA_FILE_PATH = path.join(__dirname, "data.json");
+
 const server = express();
 server.use(morgan("dev"));
 server.use(cookieParser());
@@ -48,7 +50,7 @@ server.post("/loginAdmin", async (req, res) => {
       expiresIn: "36h",
     });
     res.cookie("token", token, { httpOnly: true }); // Set cookie with the token
-    fs.readFile("data.json", "utf8", (err, data) => {
+    fs.readFile(DATA_FILE_PATH, "utf8", (err, data) => {
       if (err) {
         console.error("Error reading data file:", err);
         res.status(500).render("admin", { verified: false });
@@ -66,7 +68,7 @@ server.post("/loginAdmin", async (req, res) => {
 });
 
 server.get("/", (req, res) => {
-  fs.readFile("./data.json", "utf8", (err, data) => {
+  fs.readFile(DATA_FILE_PATH, "utf8", (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).send("Error reading data file");
@@ -100,7 +102,7 @@ const verifyToken = (req, res, next) => {
 };
 
 server.get("/admin", verifyToken, (req, res) => {
-  fs.readFile("data.json", "utf8", (err, data) => {
+  fs.readFile(DATA_FILE_PATH, "utf8", (err, data) => {
     if (err) {
       console.error("Error reading data file:", err);
       res.status(500).render("admin", { verified: false });
@@ -146,7 +148,7 @@ server.post("/uploadThumbnails", upload.single("file"), (req, res) => {
     },
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        fs.readFile("./data.json", "utf8", (err, data) => {
+        fs.readFile(DATA_FILE_PATH, "utf8", (err, data) => {
           if (err) {
             console.error("Error reading data file:", err);
             res.status(500).send("Error reading data file");
@@ -166,7 +168,7 @@ server.post("/uploadThumbnails", upload.single("file"), (req, res) => {
           });
           const updatedJsonData = JSON.stringify(dataJSON, null, 2);
 
-          fs.writeFile("data.json", updatedJsonData, (err) => {
+          fs.writeFile(DATA_FILE_PATH, updatedJsonData, (err) => {
             if (err) {
               console.error("Error writing data file:", err);
               res.status(500).send("Error writing data file");
@@ -225,7 +227,7 @@ server.post("/uploadEditedVideos", upload.single("file"), (req, res) => {
     },
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        fs.readFile("data.json", "utf8", (err, data) => {
+        fs.readFile(DATA_FILE_PATH, "utf8", (err, data) => {
           if (err) {
             console.error("Error reading data file:", err);
             res.status(500).send("Error reading data file");
@@ -247,7 +249,7 @@ server.post("/uploadEditedVideos", upload.single("file"), (req, res) => {
 
           const updatedJsonData = JSON.stringify(dataJSON, null, 2);
 
-          fs.writeFile("data.json", updatedJsonData, (err) => {
+          fs.writeFile(DATA_FILE_PATH, updatedJsonData, (err) => {
             if (err) {
               console.error("Error writing data file:", err);
               res.status(500).send("Error writing data file");
@@ -298,7 +300,7 @@ server.post("/uploadEditedShorts", upload.single("file"), (req, res) => {
     },
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        fs.readFile("data.json", "utf8", (err, data) => {
+        fs.readFile(DATA_FILE_PATH, "utf8", (err, data) => {
           if (err) {
             console.error("Error reading data file:", err);
             res.status(500).send("Error reading data file");
@@ -320,7 +322,7 @@ server.post("/uploadEditedShorts", upload.single("file"), (req, res) => {
 
           const updatedJsonData = JSON.stringify(dataJSON, null, 2);
 
-          fs.writeFile("data.json", updatedJsonData, (err) => {
+          fs.writeFile(DATA_FILE_PATH, updatedJsonData, (err) => {
             if (err) {
               console.error("Error writing data file:", err);
               res.status(500).send("Error writing data file");
@@ -339,7 +341,7 @@ server.post("/deleteThumbnails", (req, res) => {
   const storage = getStorage();
   const desertRef = ref(storage, "thumbnails/" + req.body.FileName);
   deleteObject(desertRef).then(() => {
-    fs.readFile("data.json", "utf8", (err, data) => {
+    fs.readFile(DATA_FILE_PATH, "utf8", (err, data) => {
       if (err) {
         console.error("Error reading data file:", err);
         res.status(500).send("Error reading data file");
@@ -365,7 +367,7 @@ server.post("/deleteThumbnails", (req, res) => {
       thumbnailsObj.url = updatedData;
       const updatedJsonData = JSON.stringify(dataJSON, null, 2);
 
-      fs.writeFile("data.json", updatedJsonData, (err) => {
+      fs.writeFile(DATA_FILE_PATH, updatedJsonData, (err) => {
         if (err) {
           console.error("Error writing data file:", err);
           res.status(500).send("Error writing data file");
@@ -382,7 +384,7 @@ server.post("/deleteShorts", (req, res) => {
   const storage = getStorage();
   const desertRef = ref(storage, "ShortVideosThumbnail/" + req.body.FileName);
   deleteObject(desertRef).then(() => {
-    fs.readFile("data.json", "utf8", (err, data) => {
+    fs.readFile(DATA_FILE_PATH, "utf8", (err, data) => {
       if (err) {
         console.error("Error reading data file:", err);
         res.status(500).send("Error reading data file");
@@ -408,7 +410,7 @@ server.post("/deleteShorts", (req, res) => {
       thumbnailsObj.url = updatedData;
       const updatedJsonData = JSON.stringify(dataJSON, null, 2);
 
-      fs.writeFile("data.json", updatedJsonData, (err) => {
+      fs.writeFile(DATA_FILE_PATH, updatedJsonData, (err) => {
         if (err) {
           console.error("Error writing data file:", err);
           res.status(500).send("Error writing data file");
@@ -425,7 +427,7 @@ server.post("/deleteVideos", (req, res) => {
   const storage = getStorage();
   const desertRef = ref(storage, "EditedVideosThumbnail/" + req.body.FileName);
   deleteObject(desertRef).then(() => {
-    fs.readFile("data.json", "utf8", (err, data) => {
+    fs.readFile(DATA_FILE_PATH, "utf8", (err, data) => {
       if (err) {
         console.error("Error reading data file:", err);
         res.status(500).send("Error reading data file");
@@ -451,7 +453,7 @@ server.post("/deleteVideos", (req, res) => {
       thumbnailsObj.url = updatedData;
       const updatedJsonData = JSON.stringify(dataJSON, null, 2);
 
-      fs.writeFile("data.json", updatedJsonData, (err) => {
+      fs.writeFile(DATA_FILE_PATH, updatedJsonData, (err) => {
         if (err) {
           console.error("Error writing data file:", err);
           res.status(500).send("Error writing data file");
