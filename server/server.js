@@ -30,6 +30,7 @@ server.use(morgan("dev"));
 server.use(cookieParser());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.set("views", path.join(__dirname, "views"));
 server.use(express.static("views"));
 server.set("view engine", "ejs");
 
