@@ -8,52 +8,12 @@
   ],
   "routes": [
     {
-      "src": "/loginAdmin/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/about/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/contact/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/admin/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/uploadThumbnails/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/uploadEditedVideos/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/uploadEditedShorts/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/deleteThumbnails/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/deleteShorts/",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/deleteVideos/",
-      "dest": "/server.js"
+      "src": "/assets/(.*)",
+      "dest": "views/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/views/"
+      "dest": "server.js"
     }
   ],
   "env": {
