@@ -20,6 +20,10 @@
       "dest": "views/assets/style.css"
     },
     {
+      "src": "/favicon.icon",
+      "dest": "views/assets/hyper_1.png"
+    },
+    {
       "src": "/(.*)",
       "dest": "server.js"
     }
