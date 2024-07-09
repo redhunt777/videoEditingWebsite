@@ -9,15 +9,15 @@
   "routes": [
     {
       "src": "/assets/(.*)",
-      "dest": "views/$1"
+      "dest": "views/assets/$1"
     },
     {
       "src": "/styleMob.css",
-      "dest": "views/assets/styleMob.css"
+      "dest": "/views/styleMob.css"
     },
     {
       "src": "/style.css",
-      "dest": "views/assets/style.css"
+      "dest": "/views/style.css"
     },
     {
       "src": "/favicon.icon",
