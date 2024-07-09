@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/loginAdmin",
+      "src": "/loginAdmin/",
       "dest": "/server.js"
     },
     {
@@ -16,39 +16,39 @@
       "dest": "/server.js"
     },
     {
-      "src": "/about",
+      "src": "/about/",
       "dest": "/server.js"
     },
     {
-      "src": "/contact",
+      "src": "/contact/",
       "dest": "/server.js"
     },
     {
-      "src": "/admin",
+      "src": "/admin/",
       "dest": "/server.js"
     },
     {
-      "src": "/uploadThumbnails",
+      "src": "/uploadThumbnails/",
       "dest": "/server.js"
     },
     {
-      "src": "/uploadEditedVideos",
+      "src": "/uploadEditedVideos/",
       "dest": "/server.js"
     },
     {
-      "src": "/uploadEditedShorts",
+      "src": "/uploadEditedShorts/",
       "dest": "/server.js"
     },
     {
-      "src": "/deleteThumbnails",
+      "src": "/deleteThumbnails/",
       "dest": "/server.js"
     },
     {
-      "src": "/deleteShorts",
+      "src": "/deleteShorts/",
       "dest": "/server.js"
     },
     {
-      "src": "/deleteVideos",
+      "src": "/deleteVideos/",
       "dest": "/server.js"
     },
     {
