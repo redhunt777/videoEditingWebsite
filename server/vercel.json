@@ -8,18 +8,6 @@
   ],
   "routes": [
     {
-      "src": "/assets/(.*)",
-      "dest": "views/assets/$1"
-    },
-    {
-      "src": "/styleMob.css",
-      "dest": "/views/styleMob.css"
-    },
-    {
-      "src": "/style.css",
-      "dest": "/views/style.css"
-    },
-    {
       "src": "/(.*)",
       "dest": "server.js"
     }
