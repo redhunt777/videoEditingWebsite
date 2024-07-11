@@ -25,6 +25,7 @@ server.use(express.static("views"));
 server.set("view engine", "ejs");
 server.use("/uploads", Uploadrouter);
 server.use("/delete", deleterouter);
+
 server.setTimeout(300000);
 
 main().catch((err) => console.log(err));
