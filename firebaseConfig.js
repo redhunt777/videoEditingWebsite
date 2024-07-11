@@ -1,4 +1,6 @@
 import { configDotenv } from "dotenv";
+import { getAuth } from "firebase/auth";
+import { initializeApp } from "firebase/app";
 
 configDotenv();
 // Your web app's Firebase configuration
@@ -12,4 +14,7 @@ const firebaseConfig = {
   measurementId: process.env.MEASUREMENT_ID,
 };
 
-export default firebaseConfig;
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+export default auth;

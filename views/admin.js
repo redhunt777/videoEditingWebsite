@@ -1,18 +1,19 @@
-function handleDeleteEditedThumbnails(FileName) {
+function handleDeleteEditedThumbnails(title) {
   axios
-    .post("/deleteThumbnails", { FileName })
+    .delete("/delete/thumbnails", { data: { title } }) // Note the use of 'data' property
     .then((response) => {
       location.reload();
     })
     .catch((error) => {
-      alert("Error deleting video:");
+      alert("Error deleting thumbnail:", error);
     });
 }
+
 window.handleDeleteEditedThumbnails = handleDeleteEditedThumbnails;
 
-function handleDeleteEditedShorts(FileName) {
+function handleDeleteEditedShorts(title) {
   axios
-    .post("/deleteShorts", { FileName })
+    .delete("/delete/shorts", { data: { title } })
     .then((response) => {
       location.reload();
     })
@@ -23,9 +24,9 @@ function handleDeleteEditedShorts(FileName) {
 
 window.handleDeleteEditedShorts = handleDeleteEditedShorts;
 
-function handleDeleteEditedVideos(FileName) {
+function handleDeleteEditedVideos(title) {
   axios
-    .post("/deleteVideos", { FileName })
+    .delete("/delete/videos", { data: { title } })
     .then((response) => {
       location.reload();
     })
@@ -48,7 +49,7 @@ document
       formData.append("video_url", url);
 
       axios
-        .post("/uploadEditedVideos", formData)
+        .post("/uploads/EditedVideos", formData)
         .then((response) => {
           location.reload();
         })
@@ -73,12 +74,12 @@ document
       formData.append("video_url", url);
 
       axios
-        .post("/uploadEditedShorts", formData)
+        .post("/uploads/EditedShorts", formData)
         .then((response) => {
           location.reload();
         })
         .catch((error) => {
-          alert("Error uploading short:");
+          alert("Error uploading short");
         });
     } else {
       alert("Please select a file or Url to upload");
@@ -95,7 +96,7 @@ document
       formData.append("file", file);
 
       axios
-        .post("/uploadThumbnails", formData)
+        .post("/uploads/Thumbnails", formData)
         .then((response) => {
           location.reload();
         })
