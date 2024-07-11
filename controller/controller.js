@@ -11,6 +11,8 @@ import {
 import Thumbnails from "../model/editedThumbnails.js";
 import EditedVideosThumbnail from "../model/editedVideosImages.js";
 import ShortVideosThumbnail from "../model/editedShortsImages.js";
+import path from "path";
+import { __dirname } from "../server.js";
 
 const loginAdmin = async (req, res) => {
   try {
@@ -40,19 +42,11 @@ const home = async (req, res) => {
 };
 
 const about = async (req, res) => {
-  try {
-    res.sendFile(path.join(__dirname, "views", "resume.html"));
-  } catch (error) {
-    console.error("Error loading about page", error);
-  }
+  res.sendFile(path.join(__dirname, "views", "resume.html"));
 };
 
 const contact = async (req, res) => {
-  try {
-    res.sendFile(path.join(__dirname, "views", "contact.html"));
-  } catch (error) {
-    console.error("Error loading contact page", error);
-  }
+  res.sendFile(path.join(__dirname, "views", "contact.html"));
 };
 
 const admin = async (req, res) => {

@@ -21,6 +21,8 @@ configDotenv();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+export { __dirname };
+
 const server = express();
 server.use(morgan("dev"));
 server.use(cookieParser());
