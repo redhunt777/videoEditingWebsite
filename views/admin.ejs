@@ -71,7 +71,7 @@
                     <% editedVideos.forEach(item => { %>
                                 <section>
                                     <a href="<%= item.video_url %>" target="_blank"><img src="<%= item.img_url %>" alt="thumbnail" class="thumbnail"></a>
-                                    <Button style="margin-top: 20px;" class="btn btn-danger delBut" onclick="handleDeleteEditedVideos('<%= item.title %>')"> Delete</Button>
+                                    <Button style="margin-top: 20px;" class="btn btn-danger delBut" onclick="handleDeleteEditedVideos('<%= item.title %>')" id="editedVideos1"> Delete</Button>
                                 </section>
                     <% }); %>
                 <% } else { %>
