@@ -9,7 +9,6 @@ import path from "path";
 import Uploadrouter from "./routes/upload.js";
 import deleterouter from "./routes/delete.js";
 import mongoose from "mongoose";
-import timeOut from "connect-timeout";
 
 configDotenv();
 
@@ -27,7 +26,6 @@ server.set("view engine", "ejs");
 server.use("/uploads", Uploadrouter);
 server.use("/delete", deleterouter);
 
-server.use(timeOut("5m"));
 main().catch((err) => console.log(err));
 
 async function main() {
