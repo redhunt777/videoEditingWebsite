@@ -150,7 +150,38 @@
                 alert('Please fill in both fields.');
             }
         });
-    </script>
+function handleDeleteEditedThumbnails(title) {
+  axios
+    .delete("/delete/thumbnails", { data: { title } }) // Note the use of 'data' property
+    .then((response) => {
+      location.reload();
+    })
+    .catch((error) => {
+      alert("Error deleting thumbnail:", error);
+    });
+}
+function handleDeleteEditedShorts(title) {
+  axios
+    .delete("/delete/shorts", { data: { title } })
+    .then((response) => {
+      location.reload();
+    })
+    .catch((error) => {
+      alert("Error deleting video:");
+    });
+}
+function handleDeleteEditedVideos(title) {
+  axios
+    .delete("/delete/videos", { data: { title } })
+    .then((response) => {
+      location.reload();
+    })
+    .catch((error) => {
+      alert("Error deleting video:");
+    });
+}
+   
+   </script>
 
     
 
