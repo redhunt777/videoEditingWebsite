@@ -1,13 +1,7 @@
 import express from "express";
 import { configDotenv } from "dotenv";
 import morgan from "morgan";
-import {
-  loginAdmin,
-  home,
-  about,
-  contact,
-  admin,
-} from "./controller/controller.js";
+import { loginAdmin, home, admin } from "./controller/controller.js";
 import { fileURLToPath } from "url";
 import verifyToken from "./middleware/middleware.js";
 import cookieParser from "cookie-parser";
@@ -20,8 +14,6 @@ configDotenv();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-export { __dirname };
 
 const server = express();
 server.use(morgan("dev"));
@@ -50,11 +42,11 @@ server.get("/", (req, res) => {
 });
 
 server.get("/about", (req, res) => {
-  about(req, res);
+  res.sendFile(path.join(__dirname, "views", "resume.html"));
 });
 
 server.get("/contact", (req, res) => {
-  contact(req, res);
+  res.sendFile(path.join(__dirname, "views", "contact.html"));
 });
 
 server.get("/admin", verifyToken, (req, res) => {

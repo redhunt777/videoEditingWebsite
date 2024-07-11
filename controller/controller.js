@@ -12,7 +12,10 @@ import Thumbnails from "../model/editedThumbnails.js";
 import EditedVideosThumbnail from "../model/editedVideosImages.js";
 import ShortVideosThumbnail from "../model/editedShortsImages.js";
 import path from "path";
-import { __dirname } from "../server.js";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const loginAdmin = async (req, res) => {
   try {
@@ -39,14 +42,6 @@ const home = async (req, res) => {
   const editedVideos = await EditedVideosThumbnail.find();
   const shorts = await ShortVideosThumbnail.find();
   res.render("index", { thumbnails, editedVideos, shorts });
-};
-
-const about = async (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "resume.html"));
-};
-
-const contact = async (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "contact.html"));
 };
 
 const admin = async (req, res) => {
@@ -256,8 +251,6 @@ const deleteShorts = async (req, res) => {
 export {
   loginAdmin,
   home,
-  about,
-  contact,
   admin,
   uploadThumbnails,
   uploadEditedShorts,
