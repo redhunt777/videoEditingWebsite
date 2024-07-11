@@ -3,6 +3,7 @@ function handleDeleteEditedThumbnails(title) {
     .delete("/delete/thumbnails", { data: { title } }) // Note the use of 'data' property
     .then((response) => {
       location.reload();
+      console.log(response);
     })
     .catch((error) => {
       alert("Error deleting thumbnail:", error);

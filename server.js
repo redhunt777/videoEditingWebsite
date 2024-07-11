@@ -30,7 +30,7 @@ main().catch((err) => console.log(err));
 
 async function main() {
   await mongoose.connect(process.env.URL);
-  console.log("Connected to MongoDB");
+  console.log("Connected MongoDB");
 }
 
 server.post("/loginAdmin", (req, res) => {
