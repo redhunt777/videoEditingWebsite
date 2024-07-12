@@ -17,6 +17,23 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+function addDateTimeToFilename(filename) {
+  const date = new Date();
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
+
+  const dateTimeString = `${month}${day}_${hours}${minutes}${seconds}`;
+
+  const fileParts = filename.split(".");
+  const namePart = fileParts.slice(0, -1).join(".");
+  const extensionPart = fileParts.slice(-1);
+
+  return `${namePart}_${dateTimeString}.${extensionPart}`;
+}
+
 const loginAdmin = async (req, res) => {
   try {
     const userCredential = await signInWithEmailAndPassword(
@@ -56,8 +73,12 @@ const admin = async (req, res) => {
 };
 
 const uploadThumbnails = async (req, res) => {
+  const originalFilename = req.file.originalname;
+  const uniqueFilename = addDateTimeToFilename(originalFilename);
+  console.log(uniqueFilename);
+
   const storage = getStorage();
-  const storageRef = ref(storage, "thumbnails/" + req.file.originalname);
+  const storageRef = ref(storage, "thumbnails/" + uniqueFilename);
   const metadata = {
     contentType: req.file.mimetype,
   };
@@ -89,24 +110,31 @@ const uploadThumbnails = async (req, res) => {
     async () => {
       const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
       console.log("File available at", downloadURL);
-
-      const data = new Thumbnails({
+      const data = {
         img_url: downloadURL,
-        title: req.file.originalname,
-      });
-      data.save().then(() => {
-        res.status(200).json({ message: "File uploaded successfully" });
-      });
+        title: uniqueFilename,
+      };
+      res.status(200).json(data);
     }
   );
 };
 
+const saveThumbnails = async (req, res) => {
+  const data = new Thumbnails({
+    img_url: req.body.img_url,
+    title: req.body.title,
+  });
+  data.save().then(() => {
+    res.status(200).json({ message: "File saved successfully" });
+  });
+};
+
 const uploadEditedShorts = async (req, res) => {
   const storage = getStorage();
-  const storageRef = ref(
-    storage,
-    "ShortVideosThumbnail/" + req.file.originalname
-  );
+  const originalFilename = req.file.originalname;
+  const uniqueFilename = addDateTimeToFilename(originalFilename);
+  console.log(uniqueFilename);
+  const storageRef = ref(storage, "ShortVideosThumbnail/" + uniqueFilename);
   const metadata = {
     contentType: req.file.mimetype,
   };
@@ -138,18 +166,26 @@ const uploadEditedShorts = async (req, res) => {
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         console.log("File available at", downloadURL);
-        const data = new ShortVideosThumbnail({
+        const data = {
           img_url: downloadURL,
-          title: req.file.originalname,
+          title: uniqueFilename,
           video_url: req.body.video_url,
-        });
-
-        data.save().then(() => {
-          res.status(200).json({ message: "File uploaded successfully" });
-        });
+        };
+        res.status(200).json(data);
       });
     }
   );
+};
+
+const saveShorts = async (req, res) => {
+  const data = new ShortVideosThumbnail({
+    img_url: req.body.img_url,
+    title: req.body.title,
+    video_url: req.body.video_url,
+  });
+  data.save().then(() => {
+    res.status(200).json({ message: "File saved successfully" });
+  });
 };
 
 const uploadEditedVideos = async (req, res) => {
@@ -161,11 +197,13 @@ const uploadEditedVideos = async (req, res) => {
     res.status(400).send("Please provide a video URL");
     return;
   }
+
+  const originalFilename = req.file.originalname;
+  const uniqueFilename = addDateTimeToFilename(originalFilename);
+  console.log(uniqueFilename);
+
   const storage = getStorage();
-  const storageRef = ref(
-    storage,
-    "EditedVideosThumbnail/" + req.file.originalname
-  );
+  const storageRef = ref(storage, "EditedVideosThumbnail/" + uniqueFilename);
   const metadata = {
     contentType: req.file.mimetype,
   };
@@ -197,18 +235,26 @@ const uploadEditedVideos = async (req, res) => {
     () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         console.log("File available at", downloadURL);
-        const data = new EditedVideosThumbnail({
+        const data = {
           img_url: downloadURL,
           video_url: req.body.video_url,
-          title: req.file.originalname,
-        });
-
-        data.save().then(() => {
-          res.status(200).json({ message: "File uploaded successfully" });
-        });
+          title: uniqueFilename,
+        };
+        res.status(200).json(data);
       });
     }
   );
+};
+
+const saveVideos = async (req, res) => {
+  const data = new EditedVideosThumbnail({
+    img_url: req.body.img_url,
+    video_url: req.body.video_url,
+    title: req.body.title,
+  });
+  data.save().then(() => {
+    res.status(200).json({ message: "File saved successfully" });
+  });
 };
 
 const deleteThumbnails = async (req, res) => {
@@ -258,4 +304,7 @@ export {
   deleteThumbnails,
   deleteVideos,
   deleteShorts,
+  saveThumbnails,
+  saveShorts,
+  saveVideos,
 };

@@ -1,7 +1,6 @@
 document
   .getElementById("uploadVideos")
   .addEventListener("submit", function (e) {
-    console.log("submit");
     e.preventDefault();
     const file = document.getElementById("formFileVideo").files[0];
     const url = document.getElementById("basic_url_video").value;
@@ -14,7 +13,9 @@ document
       axios
         .post("/uploads/EditedVideos", formData)
         .then((response) => {
-          location.reload();
+          axios.post("/uploads/saveVideos", response.data).then((response) => {
+            location.reload();
+          });
         })
         .catch((error) => {
           alert("Error uploading video:");
@@ -30,7 +31,6 @@ document
     e.preventDefault();
     const file = document.getElementById("formFileShorts").files[0];
     const url = document.getElementById("basic_url_short").value;
-    console.log(file, url);
     if (file && url) {
       const formData = new FormData();
       formData.append("file", file);
@@ -39,7 +39,9 @@ document
       axios
         .post("/uploads/EditedShorts", formData)
         .then((response) => {
-          location.reload();
+          axios.post("/uploads/saveShorts", response.data).then((response) => {
+            location.reload();
+          });
         })
         .catch((error) => {
           alert("Error uploading short");
@@ -61,7 +63,10 @@ document
       axios
         .post("/uploads/Thumbnails", formData)
         .then((response) => {
-          location.reload();
+          const data = response.data;
+          axios.post("/uploads/saveThumbnails", data).then((response) => {
+            location.reload();
+          });
         })
         .catch((error) => {
           alert("Error uploading thumbnail:");
