@@ -12,6 +12,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 </head>
 <body>
+  <div class="loader-wrapper">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
     <% if (verified){ %>
         <h1 style="text-align: center;">Admin Panel</h1>
         <div class="uploads">
@@ -130,6 +133,11 @@
 </body>
 <script defer type="module" src="./adminUpdated.js"></script>
 <script>
+   window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader-wrapper");
+            loader.classList.add("hiddenRoller");
+        });
+
  
           document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission

@@ -34,6 +34,8 @@ document
   .getElementById("uploadVideos")
   .addEventListener("submit", function (e) {
     e.preventDefault();
+    const loader = document.getElementsByClassName("loader-wrapper");
+    loader[0].classList.remove("hiddenRoller");
     const file = document.getElementById("formFileVideo").files[0];
     const originalFilename = file.name;
     const uniqueFilename = addDateTimeToFilename(originalFilename);
@@ -58,6 +60,8 @@ document
         },
         (error) => {
           console.error("Error uploading video:", error);
+          loader[0].classList.add("hiddenRoller");
+          alert("Error uploading video");
         },
         () => {
           uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
@@ -67,6 +71,7 @@ document
               title: uniqueFilename,
             };
             axios.post("/uploads/saveVideos", data).then((response) => {
+              loader[0].classList.add("hiddenRoller");
               location.reload();
             });
           });
@@ -79,6 +84,8 @@ document
   .getElementById("uploadShorts")
   .addEventListener("submit", function (e) {
     e.preventDefault();
+    const loader = document.getElementsByClassName("loader-wrapper");
+    loader[0].classList.remove("hiddenRoller");
     const file = document.getElementById("formFileShorts").files[0];
     const url = document.getElementById("basic_url_short").value;
     const originalFilename = file.name;
@@ -95,6 +102,8 @@ document
       },
       (error) => {
         console.error("Error uploading short:", error);
+        loader[0].classList.add("hiddenRoller");
+        alert("Error uploading short");
       },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
@@ -104,6 +113,7 @@ document
             title: uniqueFilename,
           };
           axios.post("/uploads/saveShorts", data).then((response) => {
+            loader[0].classList.add("hiddenRoller");
             location.reload();
           });
         });
@@ -115,6 +125,8 @@ document
   .getElementById("uploadThumbnails")
   .addEventListener("submit", function (e) {
     e.preventDefault();
+    const loader = document.getElementsByClassName("loader-wrapper");
+    loader[0].classList.remove("hiddenRoller");
     const file = document.getElementById("formFileThumbnail").files[0];
     const originalFilename = file.name;
     const uniqueFilename = addDateTimeToFilename(originalFilename);
@@ -130,6 +142,8 @@ document
       },
       (error) => {
         console.error("Error uploading thumbnail:", error);
+        loader[0].classList.add("hiddenRoller");
+        alert("Error uploading thumbnail");
       },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
@@ -138,6 +152,7 @@ document
             title: uniqueFilename,
           };
           axios.post("/uploads/saveThumbnails", data).then((response) => {
+            loader[0].classList.add("hiddenRoller");
             location.reload();
           });
         });
